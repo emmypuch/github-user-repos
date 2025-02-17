@@ -1,110 +1,3 @@
-// import React, { useState, useEffect } from "react";
-// import { useLocation } from "react-router-dom";
-// import {
-//   Container,
-//   Typography,
-//   List,
-//   ListItem,
-//   ListItemText,
-//   Box,
-//   CircularProgress,
-// } from "@mui/material";
-// import axios from "axios";
-
-// interface Repo {
-//   id: number;
-//   name: string;
-//   description: string;
-// }
-
-// interface Org {
-//   id: number;
-//   login: string;
-// }
-
-// const ResultPage = () => {
-//   const [repos, setRepos] = useState<Repo[]>([]);
-//   const [orgs, setOrgs] = useState<Org[]>([]);
-//   const [loading, setLoading] = useState(true);
-//   const [orgMessage, setOrgMessage] = useState("");
-//   const location = useLocation();
-
-//   useEffect(() => {
-//     const params = new URLSearchParams(location.search);
-//     const username = params.get("username");
-
-//     if (username) {
-//       setLoading(true);
-//       // Fetch repositories and organizations
-//       Promise.all([
-//         axios.get(`https://api.github.com/users/${username}/repos`),
-//         axios.get(`https://api.github.com/users/${username}/orgs`),
-//       ])
-//         .then(([reposResponse, orgsResponse]) => {
-//           setRepos(reposResponse.data);
-//           setOrgs(orgsResponse.data);
-//           if (orgsResponse.data.length === 0) {
-//             setOrgMessage("No public organizations found for this user.");
-//           } else {
-//             setOrgMessage("");
-//           }
-//         })
-//         .catch((err) => {
-//           console.error("Error fetching data:", err);
-//           setOrgMessage("An error occurred while fetching data.");
-//         })
-//         .finally(() => {
-//           setLoading(false);
-//         });
-//     }
-//   }, [location]);
-
-//   return (
-//     <Box
-//       sx={{
-//         display: "flex",
-//         justifyContent: "center",
-//         alignItems: "center",
-//         height: "100vh",
-//       }}
-//     >
-//       <Container>
-//         {loading ? (
-//           <CircularProgress style={{ margin: "20px" }} />
-//         ) : (
-//           <>
-//             <Typography variant="h4" gutterBottom>
-//               Repositories
-//             </Typography>
-//             <List>
-//               {repos.map((repo) => (
-//                 <ListItem key={repo.id}>
-//                   <ListItemText
-//                     primary={repo.name}
-//                     secondary={repo.description}
-//                   />
-//                 </ListItem>
-//               ))}
-//             </List>
-//             <Typography variant="h4" gutterBottom>
-//               Organizations
-//             </Typography>
-//             {orgMessage && <Typography>{orgMessage}</Typography>}
-//             <List>
-//               {orgs.map((org) => (
-//                 <ListItem key={org.id}>
-//                   <ListItemText primary={org.login} />
-//                 </ListItem>
-//               ))}
-//             </List>
-//           </>
-//         )}
-//       </Container>
-//     </Box>
-//   );
-// };
-
-// export default ResultPage;
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
@@ -221,8 +114,22 @@ const ResultPage = () => {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell>Name</TableCell>
-                  <TableCell>Description</TableCell>
+                  <TableCell
+                    sx={{
+                      fontWeight: "bold",
+                      fontSize: "1.2rem",
+                    }}
+                  >
+                    Name
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      fontWeight: "bold",
+                      fontSize: "1.2rem",
+                    }}
+                  >
+                    Description
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
