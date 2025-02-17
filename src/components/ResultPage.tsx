@@ -166,7 +166,14 @@ const ResultPage = () => {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell>Organization</TableCell>
+                  <TableCell
+                    sx={{
+                      fontWeight: "bold",
+                      fontSize: "1.2rem",
+                    }}
+                  >
+                    Organization
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -200,7 +207,7 @@ const ResultPage = () => {
         onClick={handleBackClick}
         style={{ marginBottom: "20px" }}
       >
-        Back to Home
+        Back to Home Page
       </Button>
     </Container>
   );
